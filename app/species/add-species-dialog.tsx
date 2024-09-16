@@ -1,16 +1,9 @@
 "use client";
+//ensures the code runs in browser, not just on server. I.e. this is front-end.
 
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import {Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -30,7 +23,7 @@ import { z } from "zod";
 const kingdoms = z.enum(["Animalia", "Plantae", "Fungi", "Protista", "Archaea", "Bacteria"]);
 
 // Use Zod to define the shape + requirements of a Species entry; used in form validation
-const speciesSchema = z.object({
+export const speciesSchema = z.object({
   scientific_name: z
     .string()
     .trim()
@@ -57,6 +50,8 @@ const speciesSchema = z.object({
 });
 
 type FormData = z.infer<typeof speciesSchema>;
+// FormData must be a speciesSchema type
+
 
 // Default values for the form fields.
 /* Because the react-hook-form (RHF) used here is a controlled form (not an uncontrolled form),
@@ -137,6 +132,7 @@ export default function AddSpeciesDialog({ userId }: { userId: string }) {
           Add Species
         </Button>
       </DialogTrigger>
+
       <DialogContent className="max-h-screen overflow-y-auto sm:max-w-[600px]">
         <DialogHeader>
           <DialogTitle>Add Species</DialogTitle>
