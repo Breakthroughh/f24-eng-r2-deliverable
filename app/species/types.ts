@@ -1,3 +1,3 @@
-import type { Database } from "@/lib/schema";  // Adjust the path according to your project structure
+import type { Database } from "@/lib/schema";  
 
 export type Species = Database["public"]["Tables"]["species"]["Row"];

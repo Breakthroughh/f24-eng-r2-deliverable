@@ -94,7 +94,7 @@ export default function EditSpeciesDialog({ species }: { species: Species }) {
                   <FormItem>
                     <FormLabel>Common Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Common Name" {...field} />
+                    <Input placeholder="Common Name" {...field} value={field.value ?? ""} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -120,7 +120,8 @@ export default function EditSpeciesDialog({ species }: { species: Species }) {
                   <FormItem>
                     <FormLabel>Total Population</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="Total Population" {...field} />
+                      <Input type="number" placeholder="Total Population" {...field} value={field.value ?? ""}/>
+                      {/* Yelled at me I think because HTML inputs can't accept null as a value, so need to convert null to "" */}
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -133,7 +134,7 @@ export default function EditSpeciesDialog({ species }: { species: Species }) {
                   <FormItem>
                     <FormLabel>Image URL</FormLabel>
                     <FormControl>
-                      <Input placeholder="Image URL" {...field} />
+                      <Input placeholder="Image URL" {...field} value={field.value ?? ""}/>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -146,7 +147,7 @@ export default function EditSpeciesDialog({ species }: { species: Species }) {
                   <FormItem>
                     <FormLabel>Description</FormLabel>
                     <FormControl>
-                      <Textarea placeholder="Description" {...field} />
+                      <Textarea placeholder="Description" {...field} value={field.value ?? ""}/>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
